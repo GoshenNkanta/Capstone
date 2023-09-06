@@ -39,7 +39,7 @@ stages:
           provider: 'azurerm'
           command: 'init'
           workingDirectory: '$(System.DefaultWorkingDirectory)/terraform-manifests'
-          backendServiceArm: 'terraform-aks-azurerm-svc-con'
+          backendServiceArm: 'Aks-Capstone-Connection'
           backendAzureRmResourceGroupName: 'terraform-storage-rg'
           backendAzureRmStorageAccountName: 'terraformstatestoragevvk'
           backendAzureRmContainerName: 'tfstatefiles'
@@ -81,7 +81,7 @@ stages:
                 provider: 'azurerm'
                 command: 'init'
                 workingDirectory: '$(Pipeline.Workspace)/terraform-manifests-out'
-                backendServiceArm: 'terraform-aks-azurerm-svc-con'
+                backendServiceArm: 'Aks-Capstone-Connection'
                 backendAzureRmResourceGroupName: 'terraform-storage-rg'
                 backendAzureRmStorageAccountName: 'terraformstatestoragevvk'
                 backendAzureRmContainerName: 'tfstatefiles'
@@ -93,7 +93,7 @@ stages:
                 provider: 'azurerm'
                 command: 'plan'
                 workingDirectory: '$(Pipeline.Workspace)/terraform-manifests-out'
-                environmentServiceNameAzureRM: 'terraform-aks-azurerm-svc-con'
+                environmentServiceNameAzureRM: 'Aks-Capstone-Connection'
                 commandOptions: '-var ssh_public_key=$(sshkey.secureFilePath) -var environment=$(DEV_ENVIRONMENT) -out $(Pipeline.Workspace)/terraform-manifests-out/$(DEV_ENVIRONMENT)-$(Build.BuildId).out'
                 allowTelemetryCollection: false
             
@@ -102,7 +102,7 @@ stages:
                 provider: 'azurerm'
                 command: 'apply'
                 workingDirectory: '$(Pipeline.Workspace)/terraform-manifests-out'
-                environmentServiceNameAzureRM: 'terraform-aks-azurerm-svc-con'
+                environmentServiceNameAzureRM: 'Aks-Capstone-Connection'
                 commandOptions: '$(Pipeline.Workspace)/terraform-manifests-out/$(DEV_ENVIRONMENT)-$(Build.BuildId).out'
                 allowTelemetryCollection: false
 
