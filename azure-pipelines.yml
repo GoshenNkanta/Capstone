@@ -40,9 +40,9 @@ stages:
           command: 'init'
           workingDirectory: '$(System.DefaultWorkingDirectory)/terraform-manifests'
           backendServiceArm: 'Aks-Capstone-Connection'
-          backendAzureRmResourceGroupName: 'terraform-storage-rg'
-          backendAzureRmStorageAccountName: 'terraformstatestoragevvk'
-          backendAzureRmContainerName: 'tfstatefiles'
+          backendAzureRmResourceGroupName: 'pizza-capstone-terraform-storage-rg'
+          backendAzureRmStorageAccountName: 'pizzaterraformstatestrg'
+          backendAzureRmContainerName: 'pizzatfstatefiles'
           backendAzureRmKey: 'aks-terraform.tfstate'
       - task: TerraformCLI@0
         displayName: Terraform Validate
@@ -50,6 +50,8 @@ stages:
           command: 'validate'
           workingDirectory: '$(System.DefaultWorkingDirectory)/terraform-manifests'
           allowTelemetryCollection: false
+
+
 
 # Stage-2: Deploy Stages for Dev & QA
 # Deployment-1: Deploy Dev AKS Cluster
@@ -82,11 +84,12 @@ stages:
                 command: 'init'
                 workingDirectory: '$(Pipeline.Workspace)/terraform-manifests-out'
                 backendServiceArm: 'Aks-Capstone-Connection'
-                backendAzureRmResourceGroupName: 'terraform-storage-rg'
-                backendAzureRmStorageAccountName: 'terraformstatestoragevvk'
-                backendAzureRmContainerName: 'tfstatefiles'
+                backendAzureRmResourceGroupName: 'pizza-capstone-terraform-storage-rg'
+                backendAzureRmStorageAccountName: 'pizzaterraformstatestrg'
+                backendAzureRmContainerName: 'pizzatfstatefiles'
                 backendAzureRmKey: 'aks-$(DEV_ENVIRONMENT).tfstate'
                 allowTelemetryCollection: false
+
 
             - task: TerraformTaskV4@4
               inputs:
@@ -105,6 +108,8 @@ stages:
                 environmentServiceNameAzureRM: 'Aks-Capstone-Connection'
                 commandOptions: '$(Pipeline.Workspace)/terraform-manifests-out/$(DEV_ENVIRONMENT)-$(Build.BuildId).out'
                 allowTelemetryCollection: false
+
+
 
 - stage: Build
   displayName: Build and push stage
