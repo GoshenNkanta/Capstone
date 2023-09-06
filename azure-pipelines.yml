@@ -77,7 +77,7 @@ stages:
               displayName: Download SSH Key
               name: sshkey
               inputs:
-                secureFile: 'aks-terraform-devops-ssh-key-ububtu.pub'
+                secureFile: 'aks-terraform-devops-ssh-key-ububtuclear.pub'
             - task: TerraformTaskV4@4
               inputs:
                 provider: 'azurerm'
