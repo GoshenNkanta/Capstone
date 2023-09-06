@@ -9,7 +9,7 @@ pool:
 
 variables:
 - name: DEV_ENVIRONMENT
-  value: dev
+  value: Goshen
 
 
 # Stage-1: Terraform Validate Stage
