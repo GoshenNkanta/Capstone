@@ -1,33 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: windows-app1-deployment
+  name: "pizza-app"
   labels:
-    app: windows-app1
+    app: "pizza-app"
 spec:
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels:
-      app: windows-app1  
+      app: "pizza-app"
   template:
     metadata:
-      name: windows-app1
       labels:
-        app: windows-app1
+        app: "pizza-app"
     spec:
-# To schedule pods on based on NodeSelectors      
-      nodeSelector:
-        #"beta.kubernetes.io/os": windows
-        app: dotnet-apps
       containers:
-      - name: windows-app1
-        image: mcr.microsoft.com/dotnet/framework/samples:aspnetapp
-        resources:
-          limits:
-            cpu: 1
-            memory: 800M
-          requests:
-            cpu: .1
-            memory: 300M
+      - name: pizza-container
+        image: pizzaacrrg01.azurecr.io/pizza-app1:latest
         ports:
-          - containerPort: 80
+        - containerPort: 3000
