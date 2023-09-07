@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: "pizza-app-prod"
+  labels:
+    app: "pizza-app"
+  namespace: PROD
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: "pizza-app"
+  template:
+    metadata:
+      labels:
+        app: "pizza-app"
+    spec:
+      containers:
+      - name: pizza-container
+        image: pizzaacrrg01.azurecr.io/pizza-app1:latest
+        ports:
+        - containerPort: 3000
