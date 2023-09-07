@@ -1,9 +1,10 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: "pizza-app"
+  name: "pizza-app-qa"
   labels:
     app: "pizza-app"
+  namespace: Q/A
 spec:
   replicas: 3
   selector:
