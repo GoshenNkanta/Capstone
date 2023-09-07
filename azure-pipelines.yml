@@ -30,6 +30,13 @@ stages:
           artifact: 'terraform-manifests-out'
           publishLocation: 'pipeline'
 
+      - task: PublishPipelineArtifact@1
+        displayName: Publish Artifacts
+        inputs:
+          targetPath: '$(System.DefaultWorkingDirectory)/Kube-manifests'
+          artifact: 'Kube-manifests-out'
+          publishLocation: 'pipeline'
+
       - task: charleszipp.azure-pipelines-tasks-terraform.azure-pipelines-tasks-terraform-installer.TerraformInstaller@0
         inputs:
           terraformVersion: 'latest'
