@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: pizza-container
-        image: pizzaacrrg01.azurecr.io/pizza-app1:latest
+        image: pizzaacrrg01.azurecr.io/pizza-app1
         ports:
         - containerPort: 3000
